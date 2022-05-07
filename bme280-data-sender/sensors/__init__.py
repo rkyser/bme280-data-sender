@@ -20,7 +20,6 @@ class AbstractBME280Sensor(metaclass = ABCMeta):
         """Reads and returns a single sample from the sensor"""
         pass
 
-
 class FakeBME280Sensor(AbstractBME280Sensor):
     """This class is a fake sampler used for 
     testing on hosts where no sampler is present"""
@@ -55,5 +54,5 @@ class BME280Sensor(AbstractBME280Sensor):
             humidity = self._bme280.get_humidity(),
             temp_c = celsius,
             temp_f = temp_c_to_f(celsius),
-            pressure = bme280.get_pressure()
+            pressure = self._bme280.get_pressure()
         )
